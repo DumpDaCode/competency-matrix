@@ -1,7 +1,5 @@
 <template>
-<EmpDashboard />
-
- 
+  <EmpDashboard /> 
 </template>
 
 <script>
