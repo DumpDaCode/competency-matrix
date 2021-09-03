@@ -17,9 +17,6 @@
                   <li>
                     <a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i>Charts
                     <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                      <ul>
-                          
-                      </ul>
                   </li>
                   <li><a href="app-event-calender.html"><i class="ti-calendar"></i> Calender </a></li>
                   <li><a href="app-email.html"><i class="ti-email"></i> Email</a></li>
