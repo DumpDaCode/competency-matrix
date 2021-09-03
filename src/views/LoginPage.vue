@@ -1,10 +1,24 @@
 <template>
-  <div>asdasd</div>
+  <div>
+    <!-- Employee Login -->
+    <div v-if="this.switch === true "> 
+
+    </div>
+    <!-- Admin Login -->
+    <div v-if="this.switch === false">
+      
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "LoginPage"
+  name: "LoginPage",
+  data(){
+    return{
+      switch : true
+    }
+  },
 }
 </script>
 
