@@ -1,43 +1,29 @@
 <template>
-    <div>
-        <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
-                <div class="nano">
-                    <div class="nano-content">
-                        <div class="logo"><a href=""><span>Dashboard</span></a></div>
-                        <AActions v-if="this.$store.state.session.type === 'admin'"/>
-                        <EActions v-if="this.$store.state.session.type === 'user'"/>
-                    </div>
-                </div>
-        </div>
-    </div>
+  <ul class="nav flex-column dashboard">
+      <li class="nav-item nav-brand">
+        <img src="@/assets/icons/logo.png" alt="" width=120>
+      </li>
+      <AActions v-if="this.$store.state.session.type === 'admin'" />
+      <EActions v-if="this.$store.state.session.type === 'user'" />
+  </ul>
 </template>
 
 <script>
-import EActions from  '@/components/EActions.vue'
-import AActions from '@/components/AActions.vue'
+import EActions from "@/components/EActions.vue";
+import AActions from "@/components/AActions.vue";
 
 export default {
-    name: "Dashboard",
-    components: {
-        EActions,
-        AActions
-
-    }
-}
+  name: "Dashboard",
+  components: {
+    EActions,
+    AActions,
+  },
+};
 </script>
 
 <style scoped>
-@import "../src/assets/css/lib/menubar/sidebar.css";
-@import "../src/assets/css/lib/font-awesome.min.css";
-@import "../src/assets/css/lib/themify-icons.css";
-@import "../src/assets/css/lib/bootstrap.min.css";
-@import "../src/assets/css/lib/helper.css";
-@import "../src/assets/css/style.css"; 
-
-.topnav {
-    display: flex;
-    justify-content: flex-end;
-    width: 100vw;
+.dashboard{
+  height: 100vh;
+  box-shadow: 1px 0px 2px gray;
 }
-
 </style>

@@ -1,23 +1,19 @@
 <template>
-    <div class="row">
-        <div class="col-1">
-            <Dashboard />
-        </div>
-        <div class="col-11">
-            <Content />
-        </div>
+    <div class="d-flex">
+        <Dashboard/>
+        <Content />
     </div>
 </template>
 
 <script>
-import Dashboard from '@/components/Dashboard.vue';
-import Content from '@/components/Content.vue';
+import Dashboard from '../components/DashBoard.vue'
+import Content from '../components/Content.vue';
 
 export default {
-    name: "EmpMainPage",
+    name: "AdminMainPage",
     components:{
         Dashboard,
-        Content
+        Content,
     }
 }
 </script>
