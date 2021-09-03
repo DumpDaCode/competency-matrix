@@ -1,9 +1,13 @@
 <template>
-    <div>asdasd</div>
+    <div>
+        asdasd
+    </div>
 </template>
 
 <script>
 export default {
-    name: "EmpMainPage"
+    name: "EmpMainPage",
+    components:{
+    }
 }
 </script>
