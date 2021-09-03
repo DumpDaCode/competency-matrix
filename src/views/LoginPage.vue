@@ -1,3 +1,13 @@
+<template>
+  <div>asdasd</div>
+</template>
+
+<script>
+export default {
+  name: "LoginPage"
+}
+</script>
+
 <style scoped>
 nav{
   text-align: right;
