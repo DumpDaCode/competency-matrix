@@ -30,5 +30,6 @@ transform:translateX(-50%) translateY(-50%);
 text-align: center;
 border: 1px solid black;
 padding: 3rem;
+border-radius: 25px;
 }
 </style>

@@ -24,6 +24,7 @@ left: 50%;
 transform:translateX(-50%) translateY(-50%);
 text-align: center;
 border: 1px solid black;
+border-radius: 25px;
 padding: 3rem;
 }
 </style>
