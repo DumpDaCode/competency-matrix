@@ -4,6 +4,10 @@ import Profile from '@/components/Profile.vue'
 import AASkills from '@/components/AASkills.vue'
 import AUSkills from '@/components/AUSkills.vue'
 import Teams from '@/components/Teams.vue'
+import EASkills from '@/components/EASkills.vue'
+import EUSkills from '@/components/EUSkills.vue'
+import EPASkills from '@/components/EPASkills.vue'
+
 
 Vue.use(VueRouter)
 
@@ -28,8 +32,20 @@ const routes = [
     component: Teams
   },
   {
-    path: "/search",
-  }
+    path: "/employee",
+  },
+  {
+    path: "/employee/add-skills",
+    component: EASkills
+  },
+  {
+    path: "/employee/update-skills",
+    component: EUSkills
+  },
+  {
+    path: "/employee/pending-approval",
+    component: EPASkills
+  },
 ]
 
 const router = new VueRouter({
