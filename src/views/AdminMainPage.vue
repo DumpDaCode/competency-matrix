@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex">
-        <Dashboard/>
+        <Dashboard />
         <Content />
     </div>
 </template>

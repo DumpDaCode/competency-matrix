@@ -71,11 +71,9 @@ nav{
   color: black;
   
 }
-
 a{
   color: black;
 }
-
 a:hover{
   background-color:white;
 }
