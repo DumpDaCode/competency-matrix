@@ -1,24 +1,10 @@
 <template>
   <div>
-    <!-- Toggles between admin and employee login page -->
-    <div class="switchButton">
-      <button @click="toggle"> 
-        <span v-if="this.switch === true">Admin</span> 
-        <span v-if="this.switch === false">Employee</span> 
-      </button>
-    </div>
     <!-- Login form -->
     <div class="main">
-      <!-- Employee Login -->
-      <div v-if="this.switch === true "> 
-        <h4>Employee Login Page</h4><br>
-        <div>Enter Username: <input type="text" placeholder="Enter Name/ Email"></div><br>
-        <div>Enter Password: <input type="password" placeholder="Enter your Password"></div><br>
-        <div><button>Login</button></div>
-      </div>
       <!-- Admin Login -->
-      <div v-if="this.switch === false">
-        <h4>Admin Login Page</h4><br />
+      <div>
+        <h4>Login Page</h4><br />
         <div>
           Enter Username: <input type="text" placeholder="Enter Name/ Email" />
         </div><br />
@@ -37,13 +23,11 @@ export default {
   name: "LoginPage",
   data(){
     return{
-      switch : true
+
     }
   },
   methods:{
-    toggle(){
-      this.switch = !this.switch
-    }
+    
   }
 }
 </script>
