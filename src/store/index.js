@@ -13,6 +13,14 @@ export default new Vuex.Store({
       toggle: false
     }
   },
+  getters:{
+    getSessionType(){
+
+    },
+    getFlags(){
+
+    }
+  },
   mutations: {
     
   },

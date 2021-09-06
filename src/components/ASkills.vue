@@ -10,7 +10,7 @@
                     <label for="name">Name:</label><input type="text" name="Name" id="name">
                 </div>
             </div>
-            <button class="btn btn-primary">Add</button>
+            <button class="btn btn-primary"><Plus /></button>
         </form>
         <table class="table mt-3">
             <thead>
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import Plus from 'vue-material-design-icons/Plus.vue'
+
 export default {
     name: "skills",
     data(){
@@ -49,13 +51,14 @@ export default {
                 name: "C"
             }]
         }
+    },
+    components: {
+        Plus
     }
 }
 </script>
 
 <style scoped>
-label{
-    width: 100px
-}
+
 </style>
 
