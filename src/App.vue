@@ -1,21 +1,18 @@
 <template>
   <div>
     <LoginPage v-if="this.$store.state.session.type === ''" />
-    <EmpMainPage v-if="this.$store.state.session.type === 'user'" />
-    <AdminMainPage v-if="this.$store.state.session.type === 'admin'" />
+    <MainPage v-else />
   </div> 
 </template>
 
 <script>
-import AdminMainPage from '@/views/AdminMainPage.vue'
-import EmpMainPage from '@/views/EmpMainPage.vue'
+import MainPage from '@/views/MainPage.vue'
 import LoginPage from '@/views/LoginPage.vue'
 
 export default {
   name: "App",
   components: {
-    AdminMainPage,
-    EmpMainPage,
+    MainPage,
     LoginPage
   }
 };
@@ -23,6 +20,6 @@ export default {
 
 <style>
 label{
-    width: 100px
+    width: 150px
 }
 </style>

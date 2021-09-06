@@ -10,7 +10,7 @@ import Dashboard from '../components/DashBoard.vue'
 import Content from '../components/Content.vue';
 
 export default {
-    name: "AdminMainPage",
+    name: "MainPage",
     components:{
         Dashboard,
         Content,

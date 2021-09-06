@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     session: {
-      type: "admin",
+      type: "user",
       uid: "" 
     },
     flags:{
@@ -25,6 +26,21 @@ export default new Vuex.Store({
     
   },
   actions: {
+    login:function(ctx,payload){
+      console.log("login function called")
+     const LoginDetails={
+        username: payload.username,
+        password: payload.password,
+      }
+      console.log(LoginDetails)
+      axios.post("http://localhost:8081/login",LoginDetails)
+      .then(res=>{
+        console.log(res);
+    })
+      .catch(err=>{
+        console.log(err);
+      })
+    }
   },
   modules: {
   }

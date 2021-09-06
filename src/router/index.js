@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Profile from '@/components/Profile.vue'
+import Profile from '@/components/EProfile.vue'
 import ASkills from '@/components/ASkills.vue'
 import ASettings from '@/components/ASettings.vue'
 import ATeams from '@/components/ATeams.vue'
 import ESkills from '@/components/ESkills.vue'
 import EApproval from '@/components/EApproval.vue'
 import ERequest from '@/components/ERequest.vue'
+import Report from '@/components/Report.vue'
 
 
 Vue.use(VueRouter)
@@ -16,7 +17,7 @@ const routes = [
     path: "/logout",
   },
   {
-    path: "/admin",
+    path: "/",
   },
   {
     path: "/admin/skills",
@@ -48,6 +49,10 @@ const routes = [
   {
     path: "/user/request",
     component: ERequest
+  },
+  {
+    path: "/user/report",
+    component: Report
   },
 ]
 

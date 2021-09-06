@@ -1,9 +1,9 @@
 <template>
     <div class="d-flex flex-column w-100">
         <CHead />
-        <div class="container mt-3">
-        <router-view />
-    </div>      
+        <div class="container mt-5 inside-scroll">
+            <router-view />
+        </div>      
     </div>
 </template>
 
@@ -19,5 +19,9 @@ export default {
 </script>
 
 <style scoped>
-
+.inside-scroll{
+    overflow-x:hidden;
+    overflow-y:auto;
+    height: 80vh;
+}
 </style>

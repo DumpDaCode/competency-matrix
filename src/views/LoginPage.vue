@@ -12,7 +12,7 @@
           Enter Password:
           <input type="password" placeholder="Enter your Password" />
         </div><br />
-        <div><button>Login</button></div>
+        <div><button @click="login">Login</button></div>
       </div>`
     </div>
   </div>
@@ -27,7 +27,15 @@ export default {
     }
   },
   methods:{
-    
+    login(){
+      console.log("login funstion called")
+      const log={
+        username: this.username,
+        password: this.password,
+      }
+          this.$store.dispatch("login", log);
+
+    }
   }
 }
 </script>

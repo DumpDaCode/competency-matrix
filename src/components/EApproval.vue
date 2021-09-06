@@ -1,17 +1,18 @@
 <template>
   <div class="main">
-      <table>
+      <h3>Approval status:</h3>
+      <table class="table mt-3">
           <tr>
               <th>Appraiser Name</th>
               <th>Skills</th>
               <th>Experience</th>
               <th>Status</th>
           </tr>
-          <tr>
-              <td>a</td>
-              <td>b</td>
-              <td>c</td>
-              <td>d</td>
+          <tr v-for="approval in approvals" :key="approval.id">
+              <td>{{approval.name}}</td>
+              <td>{{approval.skills}}</td>
+              <td>{{approval.experience}}</td>
+              <td>{{approval.status}}</td>
           </tr>
       </table>
   </div>
@@ -21,8 +22,27 @@
 export default {
     name: 'EPASkills',
     data: function(){
-    return{}
- }
+        return{
+            approvals: [{
+                name: "Amol Jadhao",
+                skills: "C",
+                experience: "3",
+                status: "Not Approved"
+            },
+            {
+                name: "Pranab Sharma",
+                skills: "DBMS",
+                experience: "3",
+                status: "Approved"
+            },
+            {
+                name: "Amol Jadhao",
+                skills: "C++",
+                experience: "4",
+                status: "Approved"
+            }]
+        }
+    }
 }
 </script>
  
