@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     session: {
-      type: "user",
+      type: "",
       uid: "" 
     },
     flags:{
@@ -35,7 +35,12 @@ export default new Vuex.Store({
       console.log(LoginDetails)
       axios.post("http://localhost:8081/login",LoginDetails)
       .then(res=>{
-        console.log(res);
+        console.log(res)
+        if(res.status==200)
+        {
+          this.state.session.type = "user"
+          this.$router.push('user')
+        }
     })
       .catch(err=>{
         console.log(err);

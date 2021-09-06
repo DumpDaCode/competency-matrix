@@ -6,13 +6,13 @@
       <div>
         <h4>Login Page</h4><br />
         <div>
-          Enter Username: <input type="text" placeholder="Enter Name/ Email" />
+          Enter Username: <input type="text" placeholder="Enter Name/ Email" v-model="username"/>
         </div><br />
         <div>
           Enter Password:
-          <input type="password" placeholder="Enter your Password" />
+          <input type="password" placeholder="Enter your Password" v-model="password"/>
         </div><br />
-        <div><button @click="login">Login</button></div>
+        <div><button @click.prevent="login">Login</button></div>
       </div>`
     </div>
   </div>
@@ -23,18 +23,18 @@ export default {
   name: "LoginPage",
   data(){
     return{
-
+      username: "",
+      password: ""
     }
   },
   methods:{
     login(){
-      console.log("login funstion called")
+      console.log("login function called")
       const log={
         username: this.username,
         password: this.password,
       }
-          this.$store.dispatch("login", log);
-
+      this.$store.dispatch("login", log);
     }
   }
 }
