@@ -1,36 +1,54 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import AdminAuth from '../views/AdminAuth'
-import EmpAuth from '../views/EmpAuth'
+import Profile from '@/components/Profile.vue'
+import ASkills from '@/components/ASkills.vue'
+import ASettings from '@/components/ASettings.vue'
+import ATeams from '@/components/ATeams.vue'
+import ESkills from '@/components/ESkills.vue'
+import EApproval from '@/components/EApproval.vue'
+import ERequest from '@/components/ERequest.vue'
+
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
-    name: 'Home',
-    component: Home
+    path: "/logout",
   },
   {
-    path: '/',
-    name: 'EmpAuth',
-    component: EmpAuth,
+    path: "/admin",
   },
   {
-    path: '/AdminAuth',
-    name: 'AdminAuth',
-    component: AdminAuth,
+    path: "/admin/skills",
+    component: ASkills
   },
-
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: "/admin/settings",
+    component: ASettings
+  },
+  {
+    path: "/admin/teams",
+    component: ATeams
+  },
+  {
+    path: "/user",
+  },
+  {
+    path: "/user/profile",
+    component: Profile
+  },
+  {
+    path: "/user/skills",
+    component: ESkills
+  },
+  {
+    path: "/user/approval",
+    component: EApproval
+  },
+  {
+    path: "/user/request",
+    component: ERequest
+  },
 ]
 
 const router = new VueRouter({

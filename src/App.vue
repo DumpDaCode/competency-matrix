@@ -1,46 +1,26 @@
 <template>
   <div>
-    <!-- <EmpMainPage /> -->
-    <nav>
-
-      | <router-link to="/">Employee Login</router-link> |
-      | <router-link to="/AdminAuth">Admin Login</router-link> |
-  
-    </nav>
-        <router-view />
-  </div>
+    <LoginPage v-if="this.$store.state.session.type === ''" />
+    <EmpMainPage v-if="this.$store.state.session.type === 'user'" />
+    <AdminMainPage v-if="this.$store.state.session.type === 'admin'" />
+  </div> 
 </template>
 
 <script>
-// import EmpMainPage from './views/EmpMainPage.vue'
+import AdminMainPage from '@/views/AdminMainPage.vue'
+import EmpMainPage from '@/views/EmpMainPage.vue'
+import LoginPage from '@/views/LoginPage.vue'
 
 export default {
+  name: "App",
   components: {
-    // EmpMainPage
-    // Authentication,
-  },
+    AdminMainPage,
+    EmpMainPage,
+    LoginPage
+  }
 };
 </script>
 
 <style>
-/* @import "../src/assets/css/lib/menubar/sidebar.css";
-@import "../src/assets/css/lib/font-awesome.min.css";
-@import "../src/assets/css/lib/themify-icons.css";
-@import "../src/assets/css/lib/bootstrap.min.css";
-@import "../src/assets/css/lib/helper.css";
-@import "../src/assets/css/style.css"; */
 
-nav{
-  text-align: right;
-  background-color: whitesmoke;
-  font-size: 20px;
-  color: black;
-  
-}
-a{
-  color: black;
-}
-a:hover{
-  background-color:white;
-}
 </style>
