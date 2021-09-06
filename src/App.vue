@@ -22,5 +22,7 @@ export default {
 </script>
 
 <style>
-
+label{
+    width: 100px
+}
 </style>

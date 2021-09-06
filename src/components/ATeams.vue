@@ -1,20 +1,33 @@
 <template>
     <div>
         <div>List Teams
-            <div class="d-flex justify-content-end">
-                <button class="btn btn-primary"><Plus/></button>
+            <div class="">
+                <form action="">
+                    <div class="my-3">
+                        <div class="my-4">
+                            <label for="type">Member:</label><input type="text" name="Type" id="type">
+                        </div>
+                        <div class="my-4">
+                            <label for="name">Appraiser:</label><input type="text" name="Name" id="appraiser">
+                        </div>
+                        <div class="my-4">
+                            <label for="name">Team:</label><input type="text" name="Name" id="Team">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary"><Plus/></button>
+                </form>
             </div>
         </div>
         <table  class="w-100 mt-5">
             <tr>
-                <th>Team Name</th>
-                <th>Team Members</th>
+                <th>Member</th>
                 <th>Appraiser</th>
+                <th>Team Allocated</th>
             </tr>
             <tr v-for="team in teams" :key="team.name">
-                <td>{{team.name}}</td>
                 <td>{{team.members}}</td>
                 <td>{{team.appraiser}}</td>
+                <td>{{team.name}}</td>
             </tr>
         </table>
     </div>
@@ -31,24 +44,24 @@ export default {
     data(){
        return {
            teams: [{
-               name: "A",
-               members: "x,y,z",
-               appraiser: "C"
+               name: "MMS-DP",
+               members: "Rajivranjan Singh",
+               appraiser: "Amol Jadhao"
            },
            {
-               name: "B",
-               members: "a,s,d",
-               appraiser: "D"
+               name: "MMS-DP",
+               members: "Nawaz Shaikh",
+               appraiser: "Amol Jadhao"
            },
            {
-               name: "E",
-               members: "f,g,h",
-               appraiser: "R"
+               name: "Competency Matrix",
+               members: "Akshay Mahendrakar",
+               appraiser: "Rajiv"
            },
            {
-               name: "W",
-               members: "a,s,d,f",
-               appraiser: "T"
+               name: "Competency Matrix",
+               members: "Akanksha Gupta",
+               appraiser: "Akanksha Gupta"
            }]
        }
     }

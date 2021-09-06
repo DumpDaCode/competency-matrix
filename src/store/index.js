@@ -12,7 +12,15 @@ export default new Vuex.Store({
     flags:{
       toggle: false
     }
-  }, 
+  },
+  getters:{
+    getSessionType(){
+
+    },
+    getFlags(){
+
+    }
+  },
   mutations: {
     
   },
