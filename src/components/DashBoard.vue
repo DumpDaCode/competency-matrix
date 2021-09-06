@@ -1,7 +1,9 @@
 <template>
-  <ul class="nav flex-column dashboard">
+  <ul class="nav flex-column dashboard" v-if="this.$store.state.flags.toggle">
       <li class="nav-item nav-brand">
-        <img src="@/assets/icons/logo.png" alt="" width=120>
+        <div class="container my-5">
+          Competency Matrix
+        </div>
       </li>
       <AActions v-if="this.$store.state.session.type === 'admin'" />
       <EActions v-if="this.$store.state.session.type === 'user'" />

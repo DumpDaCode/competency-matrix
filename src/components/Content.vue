@@ -1,19 +1,19 @@
 <template>
     <div class="d-flex flex-column w-100">
         <CHead />
-        <Main />        
+        <div class="container mt-3">
+        <router-view />
+    </div>      
     </div>
 </template>
 
 <script>
 import CHead from '@/components/CHead.vue'
-import Main from '@/components/Main.vue'
 
 export default {
     name: "Content",
     components: {
-        CHead,
-        Main
+        CHead
     }
 }
 </script>

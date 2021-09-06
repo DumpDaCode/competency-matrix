@@ -11,7 +11,7 @@
                 <th>Team Members</th>
                 <th>Appraiser</th>
             </tr>
-            <tr v-for="team in teams" :key="team">
+            <tr v-for="team in teams" :key="team.name">
                 <td>{{team.name}}</td>
                 <td>{{team.members}}</td>
                 <td>{{team.appraiser}}</td>

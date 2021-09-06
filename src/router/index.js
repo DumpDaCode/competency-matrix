@@ -1,50 +1,53 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Profile from '@/components/Profile.vue'
-import AASkills from '@/components/AASkills.vue'
-import AUSkills from '@/components/AUSkills.vue'
-import Teams from '@/components/Teams.vue'
-import EASkills from '@/components/EASkills.vue'
-import EUSkills from '@/components/EUSkills.vue'
-import EPASkills from '@/components/EPASkills.vue'
+import ASkills from '@/components/ASkills.vue'
+import ASettings from '@/components/ASettings.vue'
+import ATeams from '@/components/ATeams.vue'
+import ESkills from '@/components/ESkills.vue'
+import EApproval from '@/components/EApproval.vue'
+import ERequest from '@/components/ERequest.vue'
 
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/profile",
-    component: Profile
-  },
-  {
     path: "/logout",
   },
   {
-    path: "/admin/add-skills",
-    component: AASkills
+    path: "/admin",
   },
   {
-    path: "/admin/update-skills",
-    component: AUSkills
+    path: "/admin/skills",
+    component: ASkills
   },
   {
-    path: "/admin/list-teams",
-    component: Teams
+    path: "/admin/settings",
+    component: ASettings
   },
   {
-    path: "/employee",
+    path: "/admin/teams",
+    component: ATeams
   },
   {
-    path: "/employee/add-skills",
-    component: EASkills
+    path: "/user",
   },
   {
-    path: "/employee/update-skills",
-    component: EUSkills
+    path: "/user/profile",
+    component: Profile
   },
   {
-    path: "/employee/pending-approval",
-    component: EPASkills
+    path: "/user/skills",
+    component: ESkills
+  },
+  {
+    path: "/user/approval",
+    component: EApproval
+  },
+  {
+    path: "/user/request",
+    component: ERequest
   },
 ]
 
