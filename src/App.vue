@@ -8,7 +8,7 @@
 
 <script>
 import AdminMainPage from '@/views/AdminMainPage.vue'
-import EmpMainPage from '@/views/EmpMainPage.vue'
+import EmpMainPage from '@/views/EmpMainPage.vue' 
 import LoginPage from '@/views/LoginPage.vue'
 
 export default {
@@ -16,7 +16,7 @@ export default {
   components: {
     AdminMainPage,
     EmpMainPage,
-    LoginPage
+    LoginPage 
   }
 };
 </script>
