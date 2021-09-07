@@ -1,6 +1,23 @@
 <template>
   <div class="main">
       <h3>Request status:</h3>
+      <div class="position-absolute border-2 modal-bg">
+        <form action="">
+            <div class="my-3">
+                <label for="">Name</label><input type="text" name="name">
+            </div>
+            <div class="my-3">
+                <label for="">Skills</label><input type="text" name="skills">
+            </div>
+            <div class="my-3">
+                <label for="">Experience</label><input type="text" name="name">
+            </div>
+            <div class="my-3">
+                <label for="">Actions</label><input type="text" name="name">
+            </div>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+      </div>
       <table class="table mt-3">
           <tr>
               <th>Employee Name</th>
@@ -14,7 +31,7 @@
               <td>{{approval.experience}}</td>
               <td>
                   <button class="btn btn-primary me-3">Allow</button>
-                  <button class="btn btn-primary ms-3">Edit</button>
+                  <button class="btn btn-primary ms-3" @click="editSkills">Edit</button>
               </td>
           </tr>
       </table>
@@ -43,7 +60,13 @@ export default {
                 skills: "C++",
                 experience: "4",
                 status: "Approved"
-            }]
+            }],
+            modal: false
+        }
+    },
+    methods:{
+        editSkills(){
+
         }
     }
 }
@@ -62,4 +85,7 @@ td{
     padding: 5px;
     border: 1px solid black;
 } 
+.modal-bg{
+    background-color: white;
+}
 </style>

@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Dashboard from '../components/DashBoard.vue'
-import Content from '../components/Content.vue';
+import Dashboard from '@/components/DashBoard.vue'
+import Content from '@/components/Content.vue';
 
 export default {
     name: "MainPage",

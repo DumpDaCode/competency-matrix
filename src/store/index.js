@@ -7,14 +7,14 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     session: {
-      type: "",
-      uid: "" 
+      type: "user",
+      uid: ""
     },
-    flags:{
+    flags: {
       toggle: false
     }
   },
-  getters:{
+  getters: {
     getSessionType(){
 
     },
@@ -23,26 +23,26 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    
+    setSession(state, payload){
+      state.session.type = payload.type
+      state.session.uid = payload.uid
+    }
   },
   actions: {
-    login:function(ctx,payload){
-      console.log("login function called")
-     const LoginDetails={
+    login: function (ctx, payload) {
+      const LoginDetails = {
         username: payload.username,
         password: payload.password,
       }
       console.log(LoginDetails)
-      axios.post("http://localhost:8081/login",LoginDetails)
-      .then(res=>{
-        console.log(res)
-        if(res.status==200)
-        {
-          this.state.session.type = "user"
+      axios.post("http://localhost:8081/login", LoginDetails)
+      .then(res => {
+        if (res.status == 200) {
+          ctx.commit("setSession", res.body)
           this.$router.push('user')
         }
-    })
-      .catch(err=>{
+      })
+      .catch(err => {
         console.log(err);
       })
     }
