@@ -1,7 +1,6 @@
 <template>
-  <div class="main">
-      <h3>Request status:</h3>
-      <div class="position-absolute border-2 modal-bg">
+<div>
+    <!-- <div class="position-absolute border-2 modal-bg">
         <form action="">
             <div class="my-3">
                 <label for="">Name</label><input type="text" name="name">
@@ -17,7 +16,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Edit</button>
         </form>
-      </div>
+    </div> -->
+    <div class="">
+      <h3>Request status:</h3>
       <table class="table mt-3">
           <tr>
               <th>Employee Name</th>
@@ -36,6 +37,7 @@
           </tr>
       </table>
   </div>
+</div>
 </template>
  
 <script>
@@ -86,6 +88,9 @@ td{
     border: 1px solid black;
 } 
 .modal-bg{
-    background-color: white;
+    background-color: white;    
+}
+.opaque{
+    opacity: 0.5;
 }
 </style>
