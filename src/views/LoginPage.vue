@@ -5,10 +5,10 @@
       <!-- Admin Login -->
       <div>
         <h4>Login Page</h4><br />
-        <div>
+        <div class="mb-4">
           Enter Username: <input type="text" placeholder="Enter Name/ Email" v-model="username"/>
-        </div><br />
-        <div>
+        </div>
+        <div class="mb-4">
           Enter Password:
           <input type="password" placeholder="Enter your Password" v-model="password"/>
         </div><br />
@@ -35,6 +35,11 @@ export default {
         password: this.password,
       }
       this.$store.dispatch("login", log);
+    }
+  },
+  mounted(){
+    if(this.$store.getSessionType() !== ""){
+      this.$router.push('mainpage')
     }
   }
 }
