@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "LoginPage",
   data(){
@@ -29,18 +30,23 @@ export default {
   },
   methods:{
     login(){
-      console.log("login function called")
-      const log={
+      axios.post("http://localhost:8081/login", {
         username: this.username,
         password: this.password,
-      }
-      this.$store.dispatch("login", log);
+      })
+      .then(res => {
+        if (res.status == 200) {
+          this.$store.commit("setSession", {type: "User", uid: 123123})
+          this.$router.push("/user")
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
     }
   },
   mounted(){
-    if(this.$store.getSessionType() !== ""){
-      this.$router.push('mainpage')
-    }
+    
   }
 }
 </script>

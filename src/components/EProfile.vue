@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "EmpMainPage",
+  name: "Profile",
   data(){
     return{
       skills : [{

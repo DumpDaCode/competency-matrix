@@ -16,8 +16,11 @@ export default {
         Content,
     },
     mounted(){
-        if(this.$store.state.session.type == ""){
+        if(this.$store.state.session.type === ""){
             this.$router.push('login')
+        }
+        else{
+            console.log("Set State here")
         }
     }
 }
