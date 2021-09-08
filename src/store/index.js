@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     session: {
-      type: "admin",
+      type: "",
       uid: ""
     },
     flags: {

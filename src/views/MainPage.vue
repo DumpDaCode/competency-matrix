@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex">
-        <Dashboard />
+        <Dashboard v-if="this.$store.state.session.type !== ''"/>
         <Content />
     </div>
 </template>
@@ -14,6 +14,11 @@ export default {
     components:{
         Dashboard,
         Content,
+    },
+    mounted(){
+        if(this.$store.state.session.type == ""){
+            this.$router.push('login')
+        }
     }
 }
 </script>

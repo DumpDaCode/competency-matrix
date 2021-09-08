@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Profile from '@/components/EProfile.vue'
-import View from '@/views/LoginPage.vue'
+import Login from '@/components/Login.vue'
 
 import ASkills from '@/components/ASkills.vue'
 import ASettings from '@/components/ASettings.vue'
@@ -19,11 +19,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/logout",
+    path: "/",
   },
   {
-    path: "/",
-    component: View
+    path: "/login",
+    component: Login
   },
   {
     path: "/admin/skills",
