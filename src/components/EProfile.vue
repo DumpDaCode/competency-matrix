@@ -1,9 +1,8 @@
 <template>
   <div class="main">
-    <h4>Employee Details</h4>
-    <p>Name: Nawaz Shaikh</p>
-    <p>Phone Number: 987654210</p>
-    <p>Email ID: nawazs@mkcl.org</p>
+    <h3>Profile</h3>
+    <p>Username: {{info.shortname}}</p>
+    <p>Appraiser: {{info.appraiser}}</p>
     <p>Skills: </p>
     <table class="table">
       <thead>
@@ -27,10 +26,13 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: "Profile",
   data(){
     return{
+      info: {},
       skills : [{
         domain: "Non-Technical",
         name:  "SEO",
@@ -50,6 +52,16 @@ export default {
         appraiser: "Mukesh Harane" 
       }]
     }
+  },
+  mounted(){
+    axios
+    .post("http://localhost:8081/profile", {"shortname": this.$store.state.session.uid})
+    .then(res => {
+      this.info = res.data
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 };
 </script>

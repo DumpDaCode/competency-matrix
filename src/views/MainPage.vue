@@ -17,7 +17,7 @@ export default {
     },
     mounted(){
         if(this.$store.state.session.type === ""){
-            this.$router.push('login')
+            this.$router.push('/login')
         }
         else{
             console.log("Set State here")

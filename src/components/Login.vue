@@ -36,8 +36,13 @@ export default {
       })
       .then(res => {
         if (res.status == 200) {
-          this.$store.commit("setSession", {type: "User", uid: 123123})
-          this.$router.push("/user")
+          console.log(res)
+          this.$store.commit("setSession", res.data)
+          if(this.$store.state.session.type === "user")
+            this.$router.push("/user")
+          else  
+            this.$router.push("/admin")
+          console.log(this.$store.state.session)
         }
       })
       .catch(err => {

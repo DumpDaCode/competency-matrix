@@ -24,7 +24,7 @@ export default new Vuex.Store({
   mutations: {
     setSession(state, payload){
       state.session.type = payload.type.toLowerCase()
-      state.session.uid = payload.uid
+      state.session.uid = payload.uid.toLowerCase()
     }
   },
   actions: {
