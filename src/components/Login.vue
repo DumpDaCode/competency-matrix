@@ -5,10 +5,10 @@
       <!-- Admin Login -->
       <div>
         <h4>Login Page</h4><br />
-        <div>
+        <div class="mb-4">
           Enter Username: <input type="text" placeholder="Enter Name/ Email" v-model="username"/>
-        </div><br />
-        <div>
+        </div>
+        <div class="mb-4">
           Enter Password:
           <input type="password" placeholder="Enter your Password" v-model="password"/>
         </div><br />
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "LoginPage",
   data(){
@@ -29,13 +30,28 @@ export default {
   },
   methods:{
     login(){
-      console.log("login function called")
-      const log={
+      axios.post("http://localhost:8081/login", {
         username: this.username,
         password: this.password,
-      }
-      this.$store.dispatch("login", log);
+      })
+      .then(res => {
+        if (res.status == 200) {
+          console.log(res)
+          this.$store.commit("setSession", res.data)
+          if(this.$store.state.session.type === "user")
+            this.$router.push("/user")
+          else  
+            this.$router.push("/admin")
+          console.log(this.$store.state.session)
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
     }
+  },
+  mounted(){
+    
   }
 }
 </script>
