@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex flex-column w-100">
-        <CHead v-if="this.$store.state.session.type !== ''"/>
+        <CHead />
         <div class="container mt-5 inside-scroll">
             <router-view />
         </div>      
