@@ -25,7 +25,8 @@
       </div>
       <hr>
       <p>Selected Skills:</p>
-      <p v-for="i in skillarray" :key="i">{{i}}</p>
+      <p v-if="this.updclcicked == false">Select a skill to Delete</p>
+      <span v-for="value, i in skillarray" :key="i"><button @click="arrayUpdate(i)" class="btn btn-danger mx-2">{{value}}</button></span>
       <hr>
     <button @click="increment">Add One more Skill</button>
     </div>
@@ -54,6 +55,7 @@
             <button @click="updateSkill(skill)" class="btn btn-primary">
               Edit
             </button>
+            <button @click="deleteSkill(skill)" class="btn btn-danger mx-2">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -77,6 +79,10 @@ export default {
     };
   },
   methods: {
+    arrayUpdate: function(i){
+      console.log(i)
+      this.skillarray.splice(i,1)
+    },
     increment: function() {
       this.skillarray.push(this.skillname.toUpperCase())
       this.skillname = "";
@@ -92,7 +98,7 @@ export default {
         .post("http://localhost:8081/addskills", skill)
         .then((res) => {
           console.log(res.data);
-          // this.skillarray = []
+          this.skillarray = []
         })
         .catch((e) => {
           console.log(e);
@@ -117,8 +123,9 @@ export default {
       console.log("Update func called");
       this.updclcicked = false;
       this.domaintype = skill.DomainType;
-      this.skillname = skill.SkillName;
+      this.skillname = "";
       this.selectedSkill = skill;
+      this.skillarray = skill.SkillName;
     },
     updateSkillHandler: function() {
       console.log("Update Skill handler func called");
@@ -129,17 +136,31 @@ export default {
       };
       axios
         .put(
-          `http://localhost:8081/updateskills/${this.selectedSkill._id}`,
+          `http://localhost:8081/updateskill/${this.selectedSkill._id}`,
           SkillUpdate
         )
         .then((res) => {
           console.log(res);
+          this.updclcicked = true;
+          this.skillarray =[];
 
+      this.domaintype = "";
           this.findallskills();
         })
         .catch((err) => console.log(err));
-      this.domaintype = "";
     },
+    deleteSkill: function(skill){
+      this.selectedSkill = skill
+      console.log("Delete skill func called");
+      axios.delete(`http://localhost:8081/deleteskill/${this.selectedSkill._id}`)
+      .then(res=>{
+        console.log(res);
+        this.findallskills();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
   },
   mounted: function() {
     this.findallskills();
