@@ -3,18 +3,19 @@
     <h3>Add Skills</h3>
     <div >
       <div class="border p-4 my-3">
+      
         <label>Domain: </label>
         <!-- {{Skills}} -->
-        <select class="skilldomain" v-model="selectedDomain">
+        <select class="skilldomain" v-model="selectedDomain" :disabled= "D">
           <option v-for="i in Skills" :key="i._id" :value="i._id">{{
             i.DomainType
           }}</option>
         </select>
         <br />
-        <label>Skill:</label>
+        <label>Skill Name:</label>
         <!-- {{ Skills }} -->
-        <select class="skilltype">
-          <option v-for="(i, idx) in filteredSkills" :key="idx" :value="i" >{{
+        <select class="skilltype" v-model="selectedSkillType">
+          <option v-for="(i, idx) in filteredSkills" :key="idx" :value="i">{{
             i
           }}</option>
         </select>
@@ -35,11 +36,12 @@
         </p>
       </div>
     </div>
-    <button class="btn btn-primary mt-4" type="button">
+    <button @click="addToArray(selectedDomain,selectedSkillType, value, value1)" class="btn btn-primary mt-4" type="button">
       Add one more skill
     </button>
     <button type="submit" @click="sendEmpSkills()" class="btn btn-primary mt-4 ms-5">Send</button>
     <p>{{ Skills.DomainType }}</p>
+    {{ SkillSet }}
   </div>
 </template>
 
@@ -55,9 +57,37 @@ export default {
       filteredSkills: [],
       value:0,
       value1:0,
+      selectedSkillType: "",
+      SkillSet: [],
+      D: false,
     };
   },
   methods: {
+    sendEmpSkills(){
+      console.log(this.SkillSet)
+      console.log("Sending emp details")
+      axios.post("http://localhost:8081/sendingempskills",{skillset: this.SkillSet})
+      .then(res=>{
+        console.log(res)
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+    },
+    addToArray(selectedDomain,selectedSkillType,value, value1){
+      console.log("Skills", this.Skills)
+      const buildSkills = {
+        DomainType: this.Skills.find(s => s._id === selectedDomain).DomainType,
+        SkillName  : selectedSkillType,
+        Experience : value,
+        Proficiency : value1
+      }
+      this.D = true;
+      this.SkillSet.push(buildSkills)
+      this.selectedSkillType = ""
+      this.value = 0
+      this.value1 = 0
+    },
     fetchmastersettings: function() {
       axios
         .get("http://localhost:8081/getmastersettings")
