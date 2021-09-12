@@ -22,13 +22,19 @@
           id="name"
           v-model="skillname"
         />
+        <!-- <button @click="updatehandler">Tick</button> -->
       </div>
-      <hr>
+      <hr />
       <p>Selected Skills:</p>
-      <p v-if="this.updclcicked == false">Select a skill to Delete</p>
-      <span v-for="value, i in skillarray" :key="i"><button @click="arrayUpdate(i)" class="btn btn-danger mx-2">{{value}}</button></span>
-      <hr>
-    <button @click="increment">Add One more Skill</button>
+      <p v-if="this.updclcicked == false">Select a skill to Update</p>
+      <span v-for="(value, i) in skillarray" :key="i"
+        ><button @click="arrayUpdate(i)" class="btn btn-danger mx-2">
+          {{ value }}
+        </button></span
+      >
+
+      <hr />
+      <button @click="increment">Add One more Skill / Update Skill</button>
     </div>
 
     <div v-if="updclcicked == true">
@@ -55,7 +61,9 @@
             <button @click="updateSkill(skill)" class="btn btn-primary">
               Edit
             </button>
-            <button @click="deleteSkill(skill)" class="btn btn-danger mx-2">Delete</button>
+            <button @click="deleteSkill(skill)" class="btn btn-danger mx-2">
+              Delete
+            </button>
           </td>
         </tr>
       </tbody>
@@ -73,19 +81,47 @@ export default {
       skillarray: [],
       Skills: [],
       domaintype: "",
-      skillname:"",
+      skillname: "",
       updclcicked: true,
       selectedSkill: null,
+      editclicked: false,
+      newSkillName: "",
+      arrayIndex: 0,
     };
   },
   methods: {
-    arrayUpdate: function(i){
-      console.log(i)
-      this.skillarray.splice(i,1)
+    arrayUpdate: function(i) {
+      console.log(i);
+      this.editclicked = true;
+      this.skillname = this.skillarray[i];
+      this.arrayIndex = i;
+      this.newSkillName = this.skillname;
+      console.log(this.newSkillName);
     },
+
     increment: function() {
-      this.skillarray.push(this.skillname.toUpperCase())
-      this.skillname = "";
+      if (this.arrayIndex == 0) {
+        console.log("Skill pushed");
+
+        this.skillarray.push(this.skillname.toUpperCase());
+        this.skillname = "";
+      } else {
+        console.log("Skill updated");
+        console.log("skills", this.skillarray);
+        console.log(this.arrayIndex);
+        if (this.skillname == "") {
+          console.log("Skill name is empty array is not pushed");
+          this.skillarray.splice(this.arrayIndex, 1);
+        } else {
+          this.skillarray.splice(
+            this.arrayIndex,
+            1,
+            this.skillname.toUpperCase()
+          );
+          console.log(this.skillarray);
+          this.arrayIndex = 0;
+        }
+      }
     },
     addskillstomaster() {
       console.log("addskills function called");
@@ -98,7 +134,7 @@ export default {
         .post("http://localhost:8081/addskills", skill)
         .then((res) => {
           console.log(res.data);
-          this.skillarray = []
+          this.skillarray = [];
         })
         .catch((e) => {
           console.log(e);
@@ -142,25 +178,26 @@ export default {
         .then((res) => {
           console.log(res);
           this.updclcicked = true;
-          this.skillarray =[];
+          (this.skillname = ""), (this.skillarray = []);
 
-      this.domaintype = "";
+          this.domaintype = "";
           this.findallskills();
         })
         .catch((err) => console.log(err));
     },
-    deleteSkill: function(skill){
-      this.selectedSkill = skill
+    deleteSkill: function(skill) {
+      this.selectedSkill = skill;
       console.log("Delete skill func called");
-      axios.delete(`http://localhost:8081/deleteskill/${this.selectedSkill._id}`)
-      .then(res=>{
-        console.log(res);
-        this.findallskills();
-      })
-      .catch(err => {
-        console.log(err);
-      })
-    }
+      axios
+        .delete(`http://localhost:8081/deleteskill/${this.selectedSkill._id}`)
+        .then((res) => {
+          console.log(res);
+          this.findallskills();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   mounted: function() {
     this.findallskills();
