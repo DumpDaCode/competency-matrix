@@ -4,10 +4,6 @@
 
     <div>
       <div class="border p-4 my-3">
-      <div class="mb-4">
-        <p>Enter Appraiser Short Name:</p>
-        <input type="text">
-      </div>
         <label>Domain: </label>
         <!-- {{Skills}} -->
         <select class="skilldomain" v-model="selectedDomain" :disabled="D">

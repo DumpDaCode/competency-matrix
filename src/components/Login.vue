@@ -30,6 +30,7 @@ export default {
   },
   methods:{
     login(){
+      console.log("Login func called");
       axios.post("http://localhost:8081/login", {
         username: this.username,
         password: this.password,
@@ -46,6 +47,9 @@ export default {
         }
       })
       .catch(err => {
+        if(err == "ldapmdl: Invalid Credentials"){
+          alert("Invalid Credentials")
+        }
         console.log(err);
       })
     }
