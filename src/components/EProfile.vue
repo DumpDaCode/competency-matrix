@@ -1,10 +1,11 @@
 <template>
   <div class="main">
     <h4>Employee Details</h4>
-    <p>Name: Nawaz Shaikh</p>
-    <p>Phone Number: 987654210</p>
-    <p>Email ID: nawazs@mkcl.org</p>
+    <p>Name: {{userDetails.FirstName + " "+userDetails.LastName}}</p>
+    <p>Email: {{userDetails.Email}}</p>
+    <p>Username: {{userDetails.Username}}</p>
     <p>Skills: </p>
+    <!-- {{this.$route.params.userdetail}} -->
     <table class="table">
       <thead>
         <tr>
@@ -48,9 +49,13 @@ export default {
         name:  "C",
         experience: "2",
         appraiser: "Mukesh Harane" 
-      }]
+      }],
+      userDetails:this.$route.params.userdetail,
     }
-  }
+  },
+  // mounted:{
+  // this.userDetails = 
+  // }
 };
 </script>
 

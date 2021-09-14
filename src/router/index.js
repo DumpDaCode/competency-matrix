@@ -27,7 +27,7 @@ const routes = [
     component: Login,
   },
   {
-    path: "/admin",
+    path: "/admin/:userdetail",
     redirect: "/admin/settings"
   },
   {
@@ -36,8 +36,9 @@ const routes = [
   },
   
   {
-    path: "/admin/skills",
-    component: ASkills
+    path: "/admin/skills/:userdetail",
+    component: ASkills,
+    name:'Adminmainpage',
   },
   {
     path: "/admin/settings",
@@ -53,11 +54,13 @@ const routes = [
   },
   {
     path: "/user",
-    redirect: "/user/profile"
+    redirect: "/user/profile",
+    
   },
   {
-    path: "/user/profile",
-    component: Profile
+    path: "/user/profile/:userdetail",
+    component: Profile,
+    name:'userprofile'
   },
   {
     path: "/user/skills",
