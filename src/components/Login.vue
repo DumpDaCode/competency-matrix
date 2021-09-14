@@ -60,9 +60,6 @@ export default {
           }
         })
         .catch((err) => {
-          // if(err.data == "ldapmdl: Invalid Credentials"){
-          // console.log("Invalid Credentials")
-          // }
           console.log("Invalid Credentials");
           alert(err.response.data.status);
           console.log(err);
