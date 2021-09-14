@@ -6,6 +6,7 @@
                 <div>
                     <input type="text" name="Search" placeholder="Search">
                     <span class="px-4" @click="searchUsers"><SearchIcon class="border border-dark p-2 rounded-circle"/></span>
+                    <button class="btn btn-primary me-4" @click="logout">Log Out</button>
                 </div>
             </div>
         </div>
@@ -34,6 +35,10 @@ export default {
         },
         searchUsers(){
             
+        },
+        logout() {
+            this.$session.destroy()
+            this.$router.push('/login')
         }
     }
 }

@@ -15,6 +15,11 @@ export default {
         Dashboard,
         Content,
     },
+    beforeCreate: function () {
+        if (!this.$session.exists()) {
+            this.$router.push('/')
+        }
+    },
     mounted(){
         if(!this.$session.exists("type") || this.$session.get("type") === ""){
             this.$router.push('/login')

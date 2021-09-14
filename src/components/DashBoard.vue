@@ -5,8 +5,8 @@
           Competency Matrix
         </div>
       </li>
-      <AActions v-if="this.$session.get('type') === 'admin'" />
-      <EActions v-if="this.$session.get('type') === 'user'" />
+      <AActions v-if="this.$sesion.exists() && this.$session.get('type') === 'admin'" />
+      <EActions v-if="this.$sesion.exists() && this.$session.get('type') === 'user'" />
   </ul>
 </template>
 

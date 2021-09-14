@@ -10,8 +10,9 @@
         </div>
         <div class="mb-4">
           Enter Password:
-          <input type="password" placeholder="Enter your Password" v-model="password"/>
+          <input type="password" placeholder="Enter your Password" v-model="password" id="myInput"/>
         </div><br />
+        <input type="checkbox" @click="showPwd">Show Password
         <div><button @click.prevent="login">Login</button></div>
       </div>`
     </div>
@@ -29,6 +30,14 @@ export default {
     }
   },
   methods:{
+    showPwd(){
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    },
     login(){
       console.log("Login func called");
       axios.post("http://localhost:8081/login", {
@@ -38,12 +47,13 @@ export default {
       .then(res => {
         console.log("res data",res.data);
         if (res.status == 200) {
-          if(this.$session.get("type") === "user")
-            this.$router.push("/user")
-          else  
-            this.$router.push("/admin")
+          this.$session.start()
           this.$session.set("type", res.data.type)
           this.$session.set("uid", res.data.uid)
+          if(this.$session.get("type") === "user")
+            this.$router.push("/user")
+          if(this.$session.get("type") === "admin")
+            this.$router.push("/admin")
         }
       })
       .catch(err => {
