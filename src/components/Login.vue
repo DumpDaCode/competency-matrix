@@ -20,6 +20,7 @@
             type="password"
             placeholder="Enter your Password"
             v-model="password"
+            @keyup.enter="login"
           />
         </div>
         <br />
