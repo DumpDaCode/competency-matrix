@@ -32,25 +32,8 @@ export default {
     name: 'EPASkills',
     data: function(){
         return{
-            approvals: [{
-                name: "Amol Jadhao",
-                skills: "C",
-                experience: "3",
-                status: "Not Approved"
-            },
-            {
-                name: "Pranab Sharma",
-                skills: "DBMS",
-                experience: "3",
-                status: "Approved"
-            },
-            {
-                name: "Amol Jadhao",
-                skills: "C++",
-                experience: "4",
-                status: "Approved"
-            }],
-            modal: false
+          profile:{},
+            modal: false,
         }
     },
     methods:{

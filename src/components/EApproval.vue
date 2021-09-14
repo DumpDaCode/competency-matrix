@@ -1,6 +1,7 @@
 <template>
   <div class="main">
     <h3>Approval status:</h3>
+    {{profile}}
     <table class="table mt-3">
       <tr>
         <th>Appraiser Name</th>
@@ -9,48 +10,49 @@
         <th>Experience</th>
         <th>Proficiency Level</th>
         <th>Status</th>
-        <th>Comment</th>
       </tr>
-      <tr v-for="approval in approvals" :key="approval.id">
-        <td>{{ approval.name }}</td>
-        <td>{{ approval.skills }}</td>
-        <td>{{ approval.experience }}</td>
-        <td></td>
-        <td></td>
-        <td>{{ approval.status }}</td>
-        <td></td>
+      <tr v-for="p in profile" :key="p.ID">
+        <td>{{ p.Appraiser }}</td>
+        <td>{{ p.DomainType }}</td>
+        <td>{{ p.SkillName }}</td>
+        <td>{{ p.Experience }}</td>
+        <td>{{ p.Proficiency }}</td>
+        <td v-if="!p.Status">Pending</td>
+        <td v-else>Approved</td>
+         <td></td>
       </tr>
     </table>
   </div>
 </template>
  
 <script>
+import axios from 'axios'
 export default {
   name: "EPASkills",
   data: function () {
     return {
-      approvals: [
-        {
-          name: "Amol Jadhao",
-          skills: "C",
-          experience: "3",
-          status: "Not Approved",
-        },
-        {
-          name: "Pranab Sharma",
-          skills: "DBMS",
-          experience: "3",
-          status: "Approved",
-        },
-        {
-          name: "Amol Jadhao",
-          skills: "C++",
-          experience: "4",
-          status: "Approved",
-        },
-      ],
+      profile:{},
     };
   },
+  methods:{
+        getProfile() {
+      console.log("uid", this.$session.get("uid"));
+      axios
+        .post("http://localhost:8081/profile", {
+          uid: this.$session.get("uid"),
+        })
+        .then((res) => {
+          console.log(res);
+          this.profile = res.data.GetProfile;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  mounted(){
+    this.getProfile()
+  }
 };
 </script>
  

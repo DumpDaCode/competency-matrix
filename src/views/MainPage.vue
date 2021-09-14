@@ -21,12 +21,12 @@ export default {
         }
     },
     mounted(){
-        // if(!this.$session.exists("type") || this.$session.get("type") === ""){
-        //     this.$router.push('/login')
-        // }
-        // else{
-        //     console.log("Set State here")
-        // }
+        if(!this.$session.exists("type") || this.$session.get("type") === ""){
+            this.$router.push('/login')
+        }
+        else{
+            console.log("Set State here")
+        }
     }
 }
 </script>

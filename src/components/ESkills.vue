@@ -133,12 +133,12 @@ export default {
 
       console.log("Skill details",this.SkillDetails);
       this.EmpRequest = {
-        // EmployeeName: this.profile.Name,
-        // ShortName: this.profile.ShortName,
-        // Appraiser: this.profile.Appraiser,
-        "EmployeeName": "Akshay",
-        "ShortName": "akshayma",
-        'Appraiser': "pranabs",
+        EmployeeName: this.profile.Name,
+        ShortName: this.profile.ShortName,
+        Appraiser: this.profile.Appraiser,
+        // "EmployeeName": "Akshay",
+        // "ShortName": "akshayma",
+        // 'Appraiser': "pranabs",
         "Status": false,
         "SkillSet":[{
         DomainType: this.Skills.find((s) => s._id === this.selectedDomain)
