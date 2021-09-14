@@ -13,6 +13,7 @@ import ESkills from '@/components/ESkills.vue'
 import EApproval from '@/components/EApproval.vue'
 import ERequest from '@/components/ERequest.vue'
 import Report from '@/components/Report.vue'
+import Doc from '@/components/Doc.vue'
 
 
 Vue.use(VueRouter)
@@ -29,6 +30,11 @@ const routes = [
     path: "/admin",
     redirect: "/admin/settings"
   },
+  {
+    path: "/admin/importdoc",
+    component: Doc
+  },
+  
   {
     path: "/admin/skills",
     component: ASkills

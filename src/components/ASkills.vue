@@ -86,7 +86,7 @@ export default {
       selectedSkill: null,
       editclicked: false,
       newSkillName: "",
-      arrayIndex: 0,
+      arrayIndex: -1,
     };
   },
   methods: {
@@ -100,7 +100,7 @@ export default {
     },
 
     increment: function() {
-      if (this.arrayIndex == 0) {
+      if (this.arrayIndex == -1) {
         console.log("Skill pushed");
 
         this.skillarray.push(this.skillname.toUpperCase());
@@ -119,7 +119,7 @@ export default {
             this.skillname.toUpperCase()
           );
           console.log(this.skillarray);
-          this.arrayIndex = 0;
+          this.arrayIndex = -1;
         }
       }
     },
