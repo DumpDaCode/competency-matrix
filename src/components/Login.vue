@@ -16,9 +16,13 @@
         </div>
         <div class="mb-4">
           Enter Password:
-          <input type="password" placeholder="Enter your Password" v-model="password" id="myInput"/>
-        </div><br />
-        <input type="checkbox" @click="showPwd">Show Password
+          <input
+            type="password"
+            placeholder="Enter your Password"
+            v-model="password"
+          />
+        </div>
+        <br />
         <div><button @click.prevent="login">Login</button></div>
       </div>
       `
