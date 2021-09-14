@@ -26,7 +26,7 @@
         <br />
         <div><button @click.prevent="login">Login</button></div>
       </div>
-      `
+      
     </div>
   </div>
 </template>
@@ -57,9 +57,9 @@ export default {
             this.$session.set("type", res.data.type);
             this.$session.set("uid", res.data.uid);
             if (this.$session.get("type") === "user") {
-              this.$router.push({name:'userprofile',params:{userdetail:res.data.Userdetails}});
+              this.$router.push("/user");
             } else if (this.$session.get("type") === "admin") {
-              this.$router.push({name:"Adminmainpage",params:{userdetail:res.data.Userdetails}});
+              this.$router.push("/admin");
             }
             console.log(res.data);
           }

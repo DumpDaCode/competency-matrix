@@ -1,10 +1,10 @@
 <template>
   <div class="main">
     <h4>Employee Details</h4>
-    <p>Name: {{userDetails.FirstName + " "+userDetails.LastName}}</p>
+    <!-- <p>Name: {{userDetails.FirstName + " "+userDetails.LastName}}</p>
     <p>Email: {{userDetails.Email}}</p>
     <p>Username: {{userDetails.Username}}</p>
-    <p>Skills: </p>
+    <p>Skills: </p> -->
     <!-- {{this.$route.params.userdetail}} -->
     <table class="table">
       <thead>
@@ -36,14 +36,16 @@ export default {
   data(){
     return{
       skills : [],
-      userDetails:this.$route.params.userdetail,
+      profile:{},
+      // userDetails:this.$route.params.userdetail,
     }
   },
   mounted(){
-    axios.post("/request", this.$session.get("uid"))
+    console.log("uid",this.$session.get("uid"));
+    axios.post("http://localhost:8081/profile", {"uid": this.$session.get("uid")})
     .then(res => {
       console.log(res)
-      this.skills = res.data.skills
+      this.profile = res.data
     })
     .catch(err => {
       console.log(err)

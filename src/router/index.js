@@ -36,7 +36,7 @@ const routes = [
   },
   
   {
-    path: "/admin/skills/:userdetail",
+    path: "/admin/skills",
     component: ASkills,
     name:'Adminmainpage',
   },
@@ -58,7 +58,7 @@ const routes = [
     
   },
   {
-    path: "/user/profile/:userdetail",
+    path: "/user/profile",
     component: Profile,
     name:'userprofile'
   },
