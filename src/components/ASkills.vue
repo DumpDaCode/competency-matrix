@@ -1,7 +1,11 @@
 <template>
   <div>
     <div>Add Skills to Master</div>
-    {{this.$route.params.userdetail}}
+    <h4>Admin Details</h4>
+    <p>Name: {{ userDetails.FirstName + " " + userDetails.LastName }}</p>
+    <p>Email: {{ userDetails.Email }}</p>
+    <p>Username: {{ userDetails.Username }}</p>
+    <!-- {{this.$route.params.userdetail}} -->
 
     <div class="my-3">
       <div class="my-4">
@@ -88,6 +92,7 @@ export default {
       editclicked: false,
       newSkillName: "",
       arrayIndex: -1,
+      userDetails: this.$route.params.userdetail,
     };
   },
   methods: {
