@@ -51,13 +51,12 @@ export default {
         .then((res) => {
           console.log("res data", res.data);
           if (res.status == 200) {
-            alert(res.data.status);
+            this.$session.set("type", res.data.type);
+            this.$session.set("uid", res.data.uid);
             if (this.$session.get("type") === "user") {
               this.$router.push("/user");
             } else if (this.$session.get("type") === "admin") {
               this.$router.push("/admin");
-              this.$session.set("type", res.data.type);
-              this.$session.set("uid", res.data.uid);
             }
 
             console.log(res.data);
