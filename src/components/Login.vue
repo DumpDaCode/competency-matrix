@@ -16,9 +16,13 @@
         </div>
         <div class="mb-4">
           Enter Password:
-          <input type="password" placeholder="Enter your Password" v-model="password" id="myInput"/>
-        </div><br />
-        <input type="checkbox" @click="showPwd">Show Password
+          <input
+            type="password"
+            placeholder="Enter your Password"
+            v-model="password"
+          />
+        </div>
+        <br />
         <div><button @click.prevent="login">Login</button></div>
       </div>
       `
@@ -47,13 +51,12 @@ export default {
         .then((res) => {
           console.log("res data", res.data);
           if (res.status == 200) {
-            alert(res.data.status);
+            this.$session.set("type", res.data.type);
+            this.$session.set("uid", res.data.uid);
             if (this.$session.get("type") === "user") {
               this.$router.push("/user");
             } else if (this.$session.get("type") === "admin") {
               this.$router.push("/admin");
-              this.$session.set("type", res.data.type);
-              this.$session.set("uid", res.data.uid);
             }
 
             console.log(res.data);
