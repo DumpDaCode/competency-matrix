@@ -1,11 +1,12 @@
 <template>
   <div class="main">
     <h4>Employee Details</h4>
-    <!-- <p>Name: {{userDetails.FirstName + " "+userDetails.LastName}}</p>
-    <p>Email: {{userDetails.Email}}</p>
-    <p>Username: {{userDetails.Username}}</p>
-    <p>Skills: </p> -->
-    <!-- {{this.$route.params.userdetail}} -->
+    <p>Name: {{profile.Name}}</p>
+    <p>Email: {{profile.Email}}</p>
+    <p>Username: {{profile.shortname}}</p>
+    <hr>
+    <p>Skills: </p> 
+    <!--  {{this.$route.params.userdetail}} -->
     <table class="table">
       <thead>
         <tr>
@@ -45,7 +46,7 @@ export default {
     axios.post("http://localhost:8081/profile", {"uid": this.$session.get("uid")})
     .then(res => {
       console.log(res)
-      this.profile = res.data
+      this.profile = res.data.GetProfile
     })
     .catch(err => {
       console.log(err)

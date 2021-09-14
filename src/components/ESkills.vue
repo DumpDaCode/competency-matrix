@@ -61,7 +61,11 @@
       Send
     </button>
     <p>{{ Skills.DomainType }}</p>
-    {{ SkillSet }}
+    <p>skill set</p>
+    {{ EmpRequest }}
+
+    <p>profile</p>
+    {{ profile }}
   </div>
 </template>
 
@@ -80,18 +84,19 @@ export default {
       selectedSkillType: "",
       //sending employee details and skills to appraiser
       //Main variable use for sending data to the server
-      SkillSet: {},
+      EmpRequest: {},
 
       SkillDetails: [],
       //
       D: false,
+      profile: {},
     };
   },
   methods: {
     sendEmpSkills() {
       console.log("Sending emp details", this.SkillSet);
       axios
-        .post("http://localhost:8081/sendingempskills", this.SkillSet)
+        .post("http://localhost:8081/sendingempskills", this.EmpRequest)
         .then((res) => {
           console.log(res);
           if (res.status == 200) {
@@ -122,12 +127,23 @@ export default {
       this.filteredSkills.splice(index, 1);
       console.log(this.filteredSkills);
       this.SkillDetails.push(buildSkills);
-      this.SkillSet = {
+
+
+      console.log("Skill details",this.SkillDetails);
+      this.EmpRequest = {
+        // EmployeeName: this.profile.Name,
+        // ShortName: this.profile.ShortName,
+        // Appraiser: this.profile.Appraiser,
+        "EmployeeName": "Akshay",
+        "ShortName": "akshayma",
+        'Appraiser': "pranabs",
+        "Status": false,
+        "SkillSet":{
         DomainType: this.Skills.find((s) => s._id === this.selectedDomain)
           .DomainType,
-        SkillDetail: this.SkillDetails,
+        SkillDetail: this.SkillDetails,},
       };
-      console.log("SkillSet", this.SkillSet);
+      console.log("SkillSet", this.EmpRequest.SkillSet);
       this.selectedSkillType = "";
       this.value = 0;
       this.value1 = 0;
@@ -163,10 +179,25 @@ export default {
           console.log(e);
         });
     },
+    getProfile() {
+      console.log("uid", this.$session.get("uid"));
+      axios
+        .post("http://localhost:8081/profile", {
+          uid: this.$session.get("uid"),
+        })
+        .then((res) => {
+          console.log(res);
+          this.profile = res.data.GetProfile;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   mounted: function() {
     this.fetchmastersettings();
     this.findallskills();
+    this.getProfile();
   },
   watch: {
     selectedDomain: function() {

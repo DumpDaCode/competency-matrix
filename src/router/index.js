@@ -27,7 +27,7 @@ const routes = [
     component: Login,
   },
   {
-    path: "/admin/:userdetail",
+    path: "/admin",
     redirect: "/admin/settings"
   },
   {
