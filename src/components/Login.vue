@@ -36,13 +36,13 @@ export default {
       })
       .then(res => {
         if (res.status == 200) {
-          console.log(res)
-          this.$store.commit("setSession", res.data)
-          if(this.$store.state.session.type === "user")
+          if(this.$session.get("type") === "user")
             this.$router.push("/user")
           else  
             this.$router.push("/admin")
-          console.log(this.$store.state.session)
+
+          this.$session.set("type", res.data.type)
+          this.$session.set("uid", res.data.uid)
         }
       })
       .catch(err => {
@@ -51,7 +51,7 @@ export default {
     }
   },
   mounted(){
-    
+  
   }
 }
 </script>
