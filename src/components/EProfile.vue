@@ -10,7 +10,7 @@
       <thead>
         <tr>
           <th>Skill Domain</th>
-          <th>Skill</th>
+          <th>Skill Name</th>
           <th>Years of Experience</th>
           <th>Approved by</th>
         </tr>

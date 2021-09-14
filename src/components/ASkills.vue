@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div>Add Skills to Master</div>
     <h4>Admin Details</h4>
     <p>Name: {{ userDetails.FirstName + " " + userDetails.LastName }}</p>
     <p>Email: {{ userDetails.Email }}</p>
     <p>Username: {{ userDetails.Username }}</p>
+    <hr>
     <!-- {{this.$route.params.userdetail}} -->
 
+    <div>Add Skills to Master</div>
     <div class="my-3">
       <div class="my-4">
         <label for="type">Domain Type:</label
