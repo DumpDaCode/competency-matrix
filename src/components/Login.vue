@@ -36,12 +36,12 @@ export default {
         password: this.password,
       })
       .then(res => {
+        console.log("res data",res.data);
         if (res.status == 200) {
           if(this.$session.get("type") === "user")
             this.$router.push("/user")
           else  
             this.$router.push("/admin")
-
           this.$session.set("type", res.data.type)
           this.$session.set("uid", res.data.uid)
         }

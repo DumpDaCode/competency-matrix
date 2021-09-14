@@ -24,7 +24,8 @@ const routes = [
   },
   {
     path: "/login",
-    component: Login
+    component: Login,
+  
   },
   {
     path: "/admin",

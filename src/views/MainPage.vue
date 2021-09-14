@@ -16,7 +16,7 @@ export default {
         Content,
     },
     mounted(){
-        if(this.$session.get("type") === ""){
+        if(!this.$session.exists("type") || this.$session.get("type") === ""){
             this.$router.push('/login')
         }
         else{
