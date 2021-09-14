@@ -1,10 +1,11 @@
 <template>
   <div class="main">
     <h4>Employee Details</h4>
-    <p>Name: {{}}</p>
-    <p>Employee Username: {{}}</p>
-    <p>Email ID: {{}}</p>
+    <p>Name: {{userDetails.FirstName + " "+userDetails.LastName}}</p>
+    <p>Email: {{userDetails.Email}}</p>
+    <p>Username: {{userDetails.Username}}</p>
     <p>Skills: </p>
+    <!-- {{this.$route.params.userdetail}} -->
     <table class="table">
       <thead>
         <tr>

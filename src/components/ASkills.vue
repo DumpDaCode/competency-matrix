@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>Add Skills to Master</div>
+    {{this.$route.params.userdetail}}
 
     <div class="my-3">
       <div class="my-4">
