@@ -111,6 +111,8 @@ export default {
     },
     addToArray(selectedDomain, selectedSkillType, value, value1) {
       console.log("Skills", this.Skills);
+
+
       var buildSkills = {
         SkillName: selectedSkillType,
         Experience: Number.parseInt(value),
@@ -138,11 +140,12 @@ export default {
         "ShortName": "akshayma",
         'Appraiser': "pranabs",
         "Status": false,
-        "SkillSet":{
+        "SkillSet":[{
         DomainType: this.Skills.find((s) => s._id === this.selectedDomain)
           .DomainType,
-        SkillDetail: this.SkillDetails,},
-      };
+        SkillDetail: this.SkillDetails,
+        }],
+      }
       console.log("SkillSet", this.EmpRequest.SkillSet);
       this.selectedSkillType = "";
       this.value = 0;
