@@ -12,6 +12,7 @@
           <th>Skill Domain</th>
           <th>Skill Name</th>
           <th>Years of Experience</th>
+          <th>Proficiency Level</th>
           <th>Approved by</th>
         </tr>
       </thead>
@@ -21,6 +22,7 @@
           <td>{{skill.name}}</td>
           <td>{{skill.experience}}</td>
           <td>{{skill.appraiser}}</td>
+
         </tr>
       </tbody>
     </table>
@@ -28,34 +30,25 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "EmpMainPage",
   data(){
     return{
-      skills : [{
-        domain: "Non-Technical",
-        name:  "SEO",
-        experience: "3",
-        appraiser: "Swapnil Bhaeti" 
-      },
-      {
-        domain: "Technical",
-        name:  "C++",
-        experience: "4",
-        appraiser: "Amol Jadhao" 
-      },
-      {
-        domain: "Technical",
-        name:  "C",
-        experience: "2",
-        appraiser: "Mukesh Harane" 
-      }],
+      skills : [],
       userDetails:this.$route.params.userdetail,
     }
   },
-  // mounted:{
-  // this.userDetails = 
-  // }
+  mounted(){
+    axios.post("/request", this.$session.get("uid"))
+    .then(res => {
+      console.log(res)
+      this.skills = res.data.skills
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
 };
 </script>
 

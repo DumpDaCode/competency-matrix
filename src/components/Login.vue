@@ -20,6 +20,7 @@
             type="password"
             placeholder="Enter your Password"
             v-model="password"
+            @keyup.enter="login"
           />
         </div>
         <br />
@@ -29,6 +30,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 import axios from "axios";
@@ -59,7 +61,6 @@ export default {
             } else if (this.$session.get("type") === "admin") {
               this.$router.push({name:"Adminmainpage",params:{userdetail:res.data.Userdetails}});
             }
-
             console.log(res.data);
           }
         })

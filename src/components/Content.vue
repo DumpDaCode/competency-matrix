@@ -1,9 +1,11 @@
 <template>
     <div class="d-flex flex-column w-100">
         <CHead v-if="(this.$session.exists('type') || !this.$session.get('type') === '')"/>
-        <div class="container mt-5 inside-scroll">
-            <router-view />
-        </div>      
+        <div class="inside-scroll">
+            <div class="container mt-5">
+                <router-view />
+            </div>      
+        </div>
     </div>
 </template>
 
