@@ -35,7 +35,8 @@ export default {
   name: "EmpMainPage",
   data(){
     return{
-      skills : []
+      skills : [],
+      userDetails:this.$route.params.userdetail,
     }
   },
   mounted(){
