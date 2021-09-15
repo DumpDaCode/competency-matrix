@@ -1,9 +1,9 @@
 <template>
   <div class="main">
     <h4>Employee Details</h4>
-    <p>Name: {{profile.Name}}</p>
+    <p>Name: {{profile.EmployeeName}}</p>
     <p>Email: {{profile.Email}}</p>
-    <p>Username: {{profile.shortname}}</p>
+    <p>Username: {{profile.ShortName}}</p>
     <hr>
     <p>Skills: </p> 
     <!--  {{this.$route.params.userdetail}} -->

@@ -11,8 +11,8 @@
         <th>Actions</th>
         <th>Comment</th>
       </tr>
-      <tr>
-      <tr v-for="emprequest in EmpRequest" :key="emprequest.ID">
+      <tr></tr>
+      <tr v-for="emprequest in EmpRequest" :key="emprequest.EmployeeName">
         <td>{{ emprequest.EmployeeName }}</td>
         <td>{{ emprequest.DomainType }}</td>
         <td>{{ emprequest.Experience }}</td>
@@ -26,7 +26,8 @@
         <td>Comment</td>
       </tr>
     </table>
-    {{EmpRequest}}
+
+    {{ EmpRequest }}
   </div>
 </template>
 
@@ -44,7 +45,7 @@ export default {
   methods:{
     fetchEmployeeRequest:function() {
       console.log("Fetching Employee Request");
-      axios.get(`http://localhost:8081/fetchemprequest/:shortname`)
+      axios.get(`http://localhost:8081/fetchemprequest`)
       .then((res) => {
           this.EmpRequest = res.data.AllRequests;
       })
@@ -52,15 +53,15 @@ export default {
           console.log(err);
       })
     },
-            getProfile() {
+    getUserProfile() {
       console.log("uid", this.$session.get("uid"));
       axios
         .post("http://localhost:8081/profile", {
           uid: this.$session.get("uid"),
         })
         .then((res) => {
-          console.log(res);
-          this.profile = res.data.GetProfile.ShortName;
+          console.log("res", res);
+          this.profile = res.data.GetProfile;
         })
         .catch((err) => {
           console.log(err);
@@ -69,7 +70,7 @@ export default {
   },
   mounted(){
       this.fetchEmployeeRequest();
-      this.getProfile();
+      this.getUserProfile();
   },
 }
 </script>

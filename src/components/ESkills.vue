@@ -62,10 +62,10 @@
     </button>
     <p>{{ Skills.DomainType }}</p>
     <p>skill set</p>
-    {{ EmpRequest }}
+    <!-- {{ EmpRequest }} -->
 
     <p>profile</p>
-    {{ profile }}
+    <!-- {{ profile }} -->
   </div>
 </template>
 
@@ -93,22 +93,6 @@ export default {
     };
   },
   methods: {
-    sendEmpSkills() {
-      console.log("Sending emp details", this.SkillSet);
-      axios
-        .post("http://localhost:8081/sendingempskills", this.EmpRequest)
-        .then((res) => {
-          console.log(res);
-          if (res.status == 200) {
-            console.log("success", res);
-            //handle success here
-            this.D = false;
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
     addToArray(selectedDomain, selectedSkillType, value, value1) {
       console.log("Skills", this.Skills);
 
@@ -133,7 +117,7 @@ export default {
 
       console.log("Skill details",this.SkillDetails);
       this.EmpRequest = {
-        EmployeeName: this.profile.Name,
+        EmployeeName: this.profile.EmployeeName,
         ShortName: this.profile.ShortName,
         Appraiser: this.profile.Appraiser,
         // "EmployeeName": "Akshay",
@@ -141,7 +125,7 @@ export default {
         // 'Appraiser': "pranabs",
         "Status": false,
         "SkillSet":[{
-        DomainType: this.Skills.find((s) => s._id === this.selectedDomain)
+          DomainType: this.Skills.find((s) => s._id === this.selectedDomain)
           .DomainType,
         SkillDetail: this.SkillDetails,
         }],
@@ -151,6 +135,22 @@ export default {
       this.value = 0;
       this.value1 = 0;
     },
+      sendEmpSkills() {
+        console.log("Sending emp details", this.EmpRequest);
+        axios
+          .post("http://localhost:8081/sendingempskills", this.EmpRequest)
+          .then((res) => {
+            console.log(res);
+            if (res.status == 200) {
+              console.log("success", res);
+              //handle success here
+              this.D = false;
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
     fetchmastersettings: function() {
       axios
         .get("http://localhost:8081/getmastersettings")

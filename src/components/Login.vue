@@ -54,6 +54,7 @@ export default {
           console.log("res data", res.data);
           if (res.status == 200) {
             console.log(res.data.Userdetails);
+            console.log(res.data.type);
             this.$session.set("type", res.data.type);
             this.$session.set("uid", res.data.uid);
             if (this.$session.get("type") === "user") {

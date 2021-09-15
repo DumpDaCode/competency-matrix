@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <h3>Approval status:</h3>
-    {{profile}}
     <table class="table mt-3">
       <tr>
         <th>Appraiser Name</th>
@@ -11,16 +10,20 @@
         <th>Proficiency Level</th>
         <th>Status</th>
       </tr>
-      <tr v-for="p in profile" :key="p.ID">
-        <td>{{ p.Appraiser }}</td>
-        <td>{{ p.DomainType }}</td>
-        <td>{{ p.SkillName }}</td>
-        <td>{{ p.Experience }}</td>
-        <td>{{ p.Proficiency }}</td>
-        <td v-if="!p.Status">Pending</td>
-        <td v-else>Approved</td>
-         <td></td>
-      </tr>
+      <template v-for="(p) in EmpRequest">
+        <template v-for="(set) in p.SkillSet">
+          <template v-for="(detail) in set.SkillDetail">
+            <tr :key="detail.SkillName">
+              <td>{{ p.EmployeeName }}</td>
+              <td>{{ set.DomainType }}</td>
+              <td>{{ detail.SkillName }}</td>
+              <td>{{ detail.Experience }}</td>
+              <td>{{ detail.Proficiency }}</td>
+              <td>{{ detail.Status ? "approved" : "pending"  }}</td>
+            </tr>
+          </template>
+        </template>
+      </template>
     </table>
   </div>
 </template>
@@ -32,6 +35,7 @@ export default {
   data: function () {
     return {
       profile:{},
+      EmpRequest:null,
     };
   },
   methods:{
@@ -49,9 +53,21 @@ export default {
           console.log(err);
         });
     },
+        fetchEmployeeRequest:function() {
+      console.log("Fetching Employee Request");
+      axios.get(`http://localhost:8081/fetchemprequest`)
+      .then((res) => {
+          console.log(res.data.AllRequests)
+          this.EmpRequest = res.data.AllRequests;
+      })
+      .catch((err)=>{
+          console.log(err);
+      })
+    },
   },
   mounted(){
-    this.getProfile()
+    this.getProfile();
+    this.fetchEmployeeRequest();
   }
 };
 </script>

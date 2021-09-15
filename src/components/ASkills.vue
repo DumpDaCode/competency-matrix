@@ -1,9 +1,9 @@
 <template>
   <div>
     <h4>Admin Details</h4>
-    <p>Name: {{ userDetails.FirstName + " " + userDetails.LastName }}</p>
-    <p>Email: {{ userDetails.Email }}</p>
-    <p>Username: {{ userDetails.Username }}</p>
+    <p>Name: {{profile.EmployeeName}}</p>
+    <p>Email: {{profile.Email}}</p>
+    <p>Username: {{profile.ShortName}}</p>
     <hr>
     <!-- {{this.$route.params.userdetail}} -->
 
@@ -93,7 +93,7 @@ export default {
       editclicked: false,
       newSkillName: "",
       arrayIndex: -1,
-      userDetails: this.$route.params.userdetail,
+      profile:{},
     };
   },
   methods: {
@@ -205,9 +205,24 @@ export default {
           console.log(err);
         });
     },
+        getProfile() {
+      console.log("uid", this.$session.get("uid"));
+      axios
+        .post("http://localhost:8081/profile", {
+          uid: this.$session.get("uid"),
+        })
+        .then((res) => {
+          console.log(res);
+          this.profile = res.data.GetProfile;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   mounted: function() {
     this.findallskills();
+    this.getProfile();
   },
   components: {
     Plus,
